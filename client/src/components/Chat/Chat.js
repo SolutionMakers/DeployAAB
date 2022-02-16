@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 import axios from "axios";
 import ScrollToBottom from "react-scroll-to-bottom";
 import noAvatar from "../../images/noAvatar.png";
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://share-mee.herokuapp.com";
 const socket = io.connect(ENDPOINT);
 
 const Chat = () => {
@@ -54,9 +54,7 @@ const Chat = () => {
   /************************************************************** */
   const getAllFriendsByUserId = async () => {
     try {
-      const res = await axios.get(
-        `/friends/user/${state.user_id}`
-      );
+      const res = await axios.get(`/friends/user/${state.user_id}`);
       if (res.data.success) {
         setAllFriends(res.data.results);
       }
