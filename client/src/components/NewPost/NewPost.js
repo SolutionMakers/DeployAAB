@@ -47,7 +47,7 @@ const NewPost = () => {
   const createNewPost = () => {
     axios
       .post(
-        "http://localhost:5000/posts/",
+        "/posts/",
         {
           description: description,
           media: media,

@@ -55,7 +55,7 @@ const Chat = () => {
   const getAllFriendsByUserId = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/friends/user/${state.user_id}`
+        `/friends/user/${state.user_id}`
       );
       if (res.data.success) {
         setAllFriends(res.data.results);
@@ -66,7 +66,7 @@ const Chat = () => {
   };
   /*************************************************************** */
   const getAllMessages = async (room) => {
-    const res = await axios.get(`http://localhost:5000/message/${room}`, {
+    const res = await axios.get(`/message/${room}`, {
       headers: {
         Authorization: `Bearer ${state.token}`,
       },
@@ -79,7 +79,7 @@ const Chat = () => {
   const createMessage = async () => {
     if (message !== "") {
       const res = await axios.post(
-        `http://localhost:5000/message/${room}`,
+        `/message/${room}`,
         { message },
         {
           headers: {
@@ -98,7 +98,7 @@ const Chat = () => {
   const joinRoomData = async (receiver_id) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/rooms",
+        "/rooms",
         {
           id: receiver_id,
         },

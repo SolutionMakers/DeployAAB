@@ -89,7 +89,7 @@ const ProfilePage = () => {
   const updateProfileCover = async (profileCover) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/users/cover/${user_id}`,
+        `/users/cover/${user_id}`,
         { profileCover: profileCover }
       );
       if (res.data.success) {
@@ -121,7 +121,7 @@ const ProfilePage = () => {
   /************************************************************************************************************* */
   const getPostsByUserId = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/posts/${user_id}`);
+      const res = await axios.get(`/posts/${user_id}`);
       if (res.data.success) {
         setUserPosts(res.data.results);
       }
@@ -132,7 +132,7 @@ const ProfilePage = () => {
   /************************************************************************************************************* */
   const getAllLikes = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/like`);
+      const res = await axios.get(`/like`);
       if (res.data.success) {
         setAllLikes(res.data.results);
       }
@@ -145,7 +145,7 @@ const ProfilePage = () => {
   const updatProfileImage = async (profileimage) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/users/image/${user_id}`,
+        `/users/image/${user_id}`,
         { profileimage }
       );
       if (res.data.success) {
@@ -161,7 +161,7 @@ const ProfilePage = () => {
   const getUserInfo = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/users/${user_id}/info`
+        `/users/${user_id}/info`
       );
       if (res.data.success) {
         setUserInfo(res.data.Info[0]);
@@ -175,7 +175,7 @@ const ProfilePage = () => {
   const putNewLike = async (id) => {
     try {
       const res = await axios.post(
-        `http://localhost:5000/like/${id}`,
+        `/like/${id}`,
         {},
         {
           headers: {
@@ -217,7 +217,7 @@ const ProfilePage = () => {
         description,
       };
       const res = await axios.put(
-        `http://localhost:5000/posts/${id}/post`,
+        `/posts/${id}/post`,
         newPost,
         {
           headers: {
@@ -236,7 +236,7 @@ const ProfilePage = () => {
   /************************************************************************************************************* */
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/posts/${id}`)
+      .delete(`/posts/${id}`)
       .then((result) => {
         dispatch(deletePost(id));
         getPostsByUserId();
@@ -249,7 +249,7 @@ const ProfilePage = () => {
   const followUser = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:5000/friends`,
+        `/friends`,
         { friend: user_id },
         {
           headers: {
@@ -268,7 +268,7 @@ const ProfilePage = () => {
   const unFollowUser = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/friends/remove/${user_id}`,
+        `/friends/remove/${user_id}`,
         {},
         {
           headers: {
@@ -290,7 +290,7 @@ const ProfilePage = () => {
   const getAllFriendsByUserId = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/friends/user/${user_id}`
+        `/friends/user/${user_id}`
       );
       if (res.data.success) {
         setMyFriendsList(res.data.results);
@@ -303,7 +303,7 @@ const ProfilePage = () => {
 
   const getAllFriends = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/friends/all`);
+      const res = await axios.get(`/friends/all`);
       if (res.data.success) {
         checkFriends(res.data.results);
       }

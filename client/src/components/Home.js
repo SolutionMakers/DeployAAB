@@ -43,7 +43,7 @@ const Home = () => {
   /*************************************************************************************************************** */
   const getAllPosts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/posts/friends/posts", {
+      const res = await axios.get("/posts/friends/posts", {
         headers: {
           Authorization: `Bearer ${state.token}`,
         },
@@ -63,7 +63,7 @@ const Home = () => {
 
   const getAllUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/users");
+      const res = await axios.get("/users");
       if (res.data.success) {
         setAllUsers(res.data.results);
       } else throw Error;
@@ -75,7 +75,7 @@ const Home = () => {
   /**************************************************************** */
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/posts/${id}`)
+      .delete(`/posts/${id}`)
       .then((result) => {
         dispatch(deletePost(id));
       })
@@ -90,7 +90,7 @@ const Home = () => {
         description,
       };
       const res = await axios.put(
-        `http://localhost:5000/posts/${id}/post`,
+        `/posts/${id}/post`,
         newPost,
         {
           headers: {
@@ -110,7 +110,7 @@ const Home = () => {
   const putNewLike = async (id) => {
     try {
       const res = await axios.post(
-        `http://localhost:5000/like/${id}`,
+        `/like/${id}`,
         {},
         {
           headers: {
@@ -135,7 +135,7 @@ const Home = () => {
   const getAllFriendsByUserId = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/friends/user/${state.user_id}`
+        `/friends/user/${state.user_id}`
       );
       if (res.data.success) {
         setAllFriends(res.data.results);
@@ -147,7 +147,7 @@ const Home = () => {
   /****************************************************************************************************************** */
   const getAllLikes = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/like`);
+      const res = await axios.get(`/like`);
       if (res.data.success) {
         setAllLikes(res.data.results);
       }

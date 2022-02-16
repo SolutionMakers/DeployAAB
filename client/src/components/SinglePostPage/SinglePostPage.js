@@ -40,7 +40,7 @@ const SinglePostPage = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/posts/${id}`)
+      .delete(`/posts/${id}`)
       .then((result) => {
         dispatch(deletePost(id));
         getPostByID();
@@ -56,7 +56,7 @@ const SinglePostPage = () => {
         description,
       };
       const res = await axios.put(
-        `http://localhost:5000/posts/${id}/post`,
+        `/posts/${id}/post`,
         newPost,
         {
           headers: {
@@ -77,7 +77,7 @@ const SinglePostPage = () => {
 
   const getCommentsByUserID = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/all/${id}/comments`, {
+      const res = await axios.get(`/all/${id}/comments`, {
         headers: {
           Authorization: `Bearer ${state.token}`,
         },
@@ -95,7 +95,7 @@ const SinglePostPage = () => {
 
   const getLikesByUserID = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/like/${id}`, {
+      const res = await axios.get(`/like/${id}`, {
         headers: {
           Authorization: `Bearer ${state.token}`,
         },
@@ -124,7 +124,7 @@ const SinglePostPage = () => {
   /* ****************************************************** */
   const getPostByID = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/posts/${id}/post`);
+      const res = await axios.get(`/posts/${id}/post`);
       if (res.data.success) {
         setPost(res.data.results[0]);
       }
@@ -139,7 +139,7 @@ const SinglePostPage = () => {
   const putNewLike = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:5000/like/${id}`,
+        `/like/${id}`,
         {},
         {
           headers: {
@@ -162,7 +162,7 @@ const SinglePostPage = () => {
   const createNewComment = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:5000/posts/${id}/comments`,
+        `/posts/${id}/comments`,
         { comment },
         {
           headers: {

@@ -32,7 +32,7 @@ const Login = () => {
   /* ************************* */
   const logInUser = async (e) => {
     try {
-      const res = await axios.post("http://localhost:5000/login", {
+      const res = await axios.post("/login", {
         userName,
         password,
       });
@@ -216,7 +216,7 @@ const Login = () => {
                   className="buttonRegs"
                   onClick={(e) => {
                     axios
-                      .post("http://localhost:5000/users/", {
+                      .post("/users/", {
                         userName: userName,
                         email: email,
                         dob: date,

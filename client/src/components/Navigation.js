@@ -28,7 +28,7 @@ const Navigation = () => {
 
   const getAllUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/users");
+      const res = await axios.get("/users");
       if (res.data.success) {
         setAllUsers(res.data.results);
       } else throw Error;
