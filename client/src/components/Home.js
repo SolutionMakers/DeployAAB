@@ -89,15 +89,11 @@ const Home = () => {
       const newPost = {
         description,
       };
-      const res = await axios.put(
-        `/posts/${id}/post`,
-        newPost,
-        {
-          headers: {
-            Authorization: `Bearer ${state.token}`,
-          },
-        }
-      );
+      const res = await axios.put(`/posts/${id}/post`, newPost, {
+        headers: {
+          Authorization: `Bearer ${state.token}`,
+        },
+      });
       if (res.data.success) {
         dispatch(updatePost(newPost));
         getAllPosts();
@@ -134,9 +130,7 @@ const Home = () => {
 
   const getAllFriendsByUserId = async () => {
     try {
-      const res = await axios.get(
-        `/friends/user/${state.user_id}`
-      );
+      const res = await axios.get(`/friends/user/${state.user_id}`);
       if (res.data.success) {
         setAllFriends(res.data.results);
       }
@@ -184,8 +178,6 @@ const Home = () => {
   let finalArray = allFriends.map(function (obj) {
     return obj.id;
   });
-
-  console.log(finalArray);
   /*************************************************************************** */
   return (
     <div className="contain_all_home">

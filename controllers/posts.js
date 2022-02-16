@@ -133,7 +133,7 @@ const updatePostById = (req, res) => {
 const deletePostById = (req, res) => {
   const id = req.params.id;
 
-  const query = `UPDATE Posts SET is_deleted=1 WHERE id=?;`;
+  const query = `UPDATE posts SET is_deleted=1 WHERE id=?;`;
 
   const data = [id];
 
