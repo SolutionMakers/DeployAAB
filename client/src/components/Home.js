@@ -50,6 +50,7 @@ const Home = () => {
       });
       if (res.data.success) {
         dispatch(setPosts(res.data.results.reverse()));
+        console.log(res.data.success)
       } else throw Error;
     } catch (error) {
       if (!error.response.data.success) {
