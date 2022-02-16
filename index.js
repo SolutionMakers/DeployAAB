@@ -10,12 +10,8 @@ const PORT = process.env.PORT || 5000;
 const path = require("path");
 /***************************************** */
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-}); /*************************************** */
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+/*************************************** */
 const loginRouter = require("./routes/login");
 const usersRouter = require("./routes/users");
 const postsRouter = require("./routes/post");
