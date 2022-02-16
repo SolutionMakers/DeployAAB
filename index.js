@@ -6,7 +6,7 @@ const db = require("./database/db");
 app.use(cors());
 app.use(express.json());
 const socket = require("socket.io");
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const path = require("path");
 /***************************************** */
 
