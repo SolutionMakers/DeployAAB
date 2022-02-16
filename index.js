@@ -10,12 +10,7 @@ const PORT = process.env.PORT || 5000;
 const path = require("path");
 /***************************************** */
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-}); /*************************************** */
+ /*************************************** */
 const loginRouter = require("./routes/login");
 const usersRouter = require("./routes/users");
 const postsRouter = require("./routes/post");
@@ -35,6 +30,13 @@ app.use("/like", likesRouter);
 app.use("/rooms", roomsRouter);
 app.use("/message", messageRouter);
 app.use("/friends", friendsRouter);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 /*************************************** */
 const server = app.listen(PORT, () => {
