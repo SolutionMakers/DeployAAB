@@ -80,10 +80,14 @@ const Login = () => {
     <div className="container_for_all">
       <div className="container_login">
         <div className="flex_qout">
-        <img className="logo_slogan" src="https://res.cloudinary.com/dvg9eijgb/image/upload/v1645002900/su1xnqw4k9jxcaxmyuwu.png" />
-          <div className="slogan"> Welcome to AAB</div>
+          <img
+            className="logo_slogan"
+            src="https://res.cloudinary.com/dvg9eijgb/image/upload/v1645002900/su1xnqw4k9jxcaxmyuwu.png"
+          />
+          <div className="slogan">
+            Welcome to Share<span className="mee">Me</span>
+          </div>
           <div className="qout">
-            {" "}
             Connect with new friends and get to know a new world
           </div>
         </div>
@@ -262,7 +266,7 @@ const Login = () => {
                       });
                   }}
                 >
-                  sing up
+                  Sign-Up
                 </button>
 
                 <div className="sing_up_message">{signuPMessage}</div>
