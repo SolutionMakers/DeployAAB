@@ -266,7 +266,7 @@ const Login = () => {
                       });
                   }}
                 >
-                  Sign-Up
+                  Sign Up
                 </button>
 
                 <div className="sing_up_message">{signuPMessage}</div>
